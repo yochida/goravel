@@ -4,6 +4,7 @@ import (
 	"github.com/goravel/framework/contracts/http"
 	"github.com/goravel/framework/facades"
 	"github.com/goravel/framework/support"
+	"goravel/app/http/controllers"
 )
 
 func Web() {
@@ -12,4 +13,7 @@ func Web() {
 			"version": support.Version,
 		})
 	})
+
+	homeController := controllers.NewHomeController()
+	facades.Route().Get("/input/{id}", homeController.Index)
 }
